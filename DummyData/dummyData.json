@@ -3,31 +3,27 @@
     "001": {
       "Name": "Mohamed Sheikh",
       "Subscription": "Basic Plan",
-      "status": {
+      "Status": {
         "Online": {
           "Streams": {
-            "activeStreams": 2,
-            "watching": ["Stream 002", "Stream 003"]
+            "activeStreams": 3,
+            "watching": ["stream_2", "stream_3", "stream_9"]
           }
         },
-        "offline": {
-          "lastOnline": null
-        }
+        "offline": { "lastOnline": null }
       }
     },
     "002": {
       "Name": "David Beckham",
       "Subscription": "Medium Plan",
-      "status": {
+      "Status": {
         "Online": {
           "Streams": {
-            "activeStreams": 1,
-            "watching": ["Stream 002"]
+            "activeStreams": 2,
+            "watching": ["stream_2", "stream_4"]
           }
         },
-        "offline": {
-          "lastOnline": null
-        }
+        "offline": { "lastOnline": null }
       }
     }
   }
