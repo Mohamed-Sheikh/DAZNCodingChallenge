@@ -1,0 +1,14 @@
+{
+  "name": "dazn-coding-challenge",
+  "version": "1.0.0",
+  "description": "Build a service in Node.js that exposes an API which can be consumed from any client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
