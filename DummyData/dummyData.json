@@ -25,6 +25,22 @@
         },
         "offline": { "lastOnline": null }
       }
+    },
+    "d0ac6440-60b4-11ea-b4b2-d37fa2241f06": {
+      "Name": "Denzel Washington",
+      "Subscription": "basic plan",
+      "Status": {
+        "Online": { "Streams": { "activeStreams": 0, "watching": [] } },
+        "offline": { "lastOnline": null }
+      }
+    },
+    "8ba5d6f0-60b5-11ea-8e87-8be1b943b6ff": {
+      "Name": "Test User",
+      "Subscription": "basic plan",
+      "Status": {
+        "Online": { "Streams": { "activeStreams": 0, "watching": [] } },
+        "offline": { "lastOnline": null }
+      }
     }
   }
 }
