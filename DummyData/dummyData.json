@@ -1,0 +1,34 @@
+{
+  "Users": {
+    "001": {
+      "Name": "Mohamed Sheikh",
+      "Subscription": "Basic Plan",
+      "status": {
+        "Online": {
+          "Streams": {
+            "activeStreams": 2,
+            "watching": ["Stream 002", "Stream 003"]
+          }
+        },
+        "offline": {
+          "lastOnline": null
+        }
+      }
+    },
+    "002": {
+      "Name": "David Beckham",
+      "Subscription": "Medium Plan",
+      "status": {
+        "Online": {
+          "Streams": {
+            "activeStreams": 1,
+            "watching": ["Stream 002"]
+          }
+        },
+        "offline": {
+          "lastOnline": null
+        }
+      }
+    }
+  }
+}

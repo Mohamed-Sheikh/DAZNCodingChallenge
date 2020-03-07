@@ -1,9 +1,30 @@
 const express = require("express");
+const axios = require("axios");
 const app = express();
+const data = require("../../DummyData/dummyData.json");
 
 let test = () => {
   return true;
 };
+
+app.get("/", (req, res) => {
+  res.send("OK!");
+});
+
+app.get("/getUser", (req, res) => {
+  //auth?
+  console.log("id is ", req.query.id);
+  let UserId = req.query.id;
+
+  res.send(data.Users[UserId]);
+});
+
+app.get("/getAllUsers", (req, res) => {
+  //auth
+  console.log("id is ", req.query.id);
+  let UserId = req.query.id;
+  res.send(data);
+});
 
 /*
 1) get user

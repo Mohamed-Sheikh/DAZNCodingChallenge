@@ -1,6 +1,6 @@
 "use strict";
 
-var DAZN = require("./DAZN/server");
+var DAZN = require("./DAZN/src/server");
 const port = 8080;
 
 DAZN.app.listen(8080, function() {
