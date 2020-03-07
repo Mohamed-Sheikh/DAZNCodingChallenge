@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const dummyFile = "../../DummyData/dummyData.json";
 const data = require(dummyFile);
 fs = require("fs");
+const uuid = require("uuid");
 
 let test = () => {
   return true;
@@ -24,16 +25,45 @@ app.get("/getUser", (req, res) => {
   //auth?
   try {
     let user = fetchUser(req.query.id);
+    if (!user) {
+      return res.sendStatus(400);
+    }
     res.send(user);
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
   }
 });
 
 //for unit testing purposes
 app.post("/createUser", (req, res) => {
+  let body = JSON.parse(req.body);
+  let userId = uuid.v1();
+  let obj = {
+    Name: body.Name,
+    Subscription: body.Subscription,
+    Status: {
+      Online: {
+        Streams: {
+          activeStreams: 0,
+          watching: []
+        }
+      },
+      offline: { lastOnline: null }
+    }
+  };
+
+  data.Users[userId] = obj;
+  fs.writeFile("DummyData/dummyData.json", JSON.stringify(data), err => {
+    console.error("Can't update file", err);
+  });
+
+  res.send(body.Name + " created");
+
   //auth?
+  //test the right stuff is passed in
   //get the body and append it to our json
+
   console.log("id is ", req.query.id);
   let UserId = req.query.id;
 
@@ -42,16 +72,20 @@ app.post("/createUser", (req, res) => {
 
 app.get("/getAllUsers", (req, res) => {
   //auth?
-  console.log("id is ", req.query.id);
+  //will be too big
   res.send(data);
 });
 
 app.get("/requestStream", (req, res) => {
   //fix this
-  let UserId = req.query.id;
-  let stream = req.query.stream;
   try {
+    let UserId = req.query.id;
+    let stream = req.query.stream;
+
     let user = fetchUser(UserId);
+    if (!user) {
+      return res.sendStatus(400);
+    }
     let activeStreams = user.Status.Online.Streams.activeStreams;
     let currentStreams = user.Status.Online.Streams.watching;
 
@@ -65,6 +99,11 @@ app.get("/requestStream", (req, res) => {
         );
         break;
       default:
+        /*in reality would write to a database,
+          database of choice being DynamoDb, 
+          writing to a local json file to mimic
+          data */
+
         activeStreams += 1;
         data.Users[UserId].Status.Online.Streams.activeStreams = activeStreams;
         data.Users[UserId].Status.Online.Streams.watching.push(
@@ -82,29 +121,11 @@ app.get("/requestStream", (req, res) => {
 let fetchUser = id => {
   console.log("id is ", id);
   let UserId = id;
+  if (!data.Users[UserId]) {
+    return false;
+  }
   return data.Users[UserId];
 };
-
-/*
-1) get user
-2) How many streams are they watching 
-    - if more than 3
-        -call function
-    -else return no of streams
-3) request to watch stream
-    - calls function 2
-        if less < 3 =  ok!
-        else: prevent them 
-
-4) implement a health check that runs every x secs 
-    return status 
-    if status !200
-        do something
-    else 
-        return
-
-    *in theory you would use an AWS Load balancers to configure health checks 
-*/
 
 module.exports.app = app;
 module.exports.test = test;
