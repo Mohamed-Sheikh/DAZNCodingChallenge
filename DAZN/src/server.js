@@ -55,14 +55,20 @@ app.get("/getUser", (req, res) => {
 
 //for unit testing purposes
 app.post("/createUser", (req, res) => {
-  logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
-  let body = JSON.parse(req.body);
-  let user = addUser(body);
+  try {
+    logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
+    let body = JSON.parse(req.body);
+    let user = addUser(body);
 
-  if (!user) {
+    if (!user) {
+      return res.sendStatus(500);
+    }
+    return res.send(body.Name + " created");
+  } catch (error) {
+    logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
+    logger.error(`${req.method} on resource ${req.path} -  ${err}`);
     return res.sendStatus(500);
   }
-  return res.send(body.Name + " created");
 
   //auth?
   //test the right stuff is passed in
@@ -70,25 +76,16 @@ app.post("/createUser", (req, res) => {
 });
 
 app.post("/removeUser", (req, res) => {
-  let body = JSON.parse(req.body);
-  logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   try {
-    let user = fetchUser(body.id);
+    logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
+    let id = JSON.parse(req.body).id;
+    let user = removeUser(id);
     if (!user) {
-      logger.error(`${req.method} on resource ${req.path} -  Status code 400`);
-      return res.sendStatus(400);
+      return res.sendStatus(500);
     }
-
-    //Deleting user, in reality would make a call to a database to achieve this.
-    delete data["Users"][body.id];
-    fs.writeFile("Database/database.json", JSON.stringify(data), err => {
-      console.error("Can't update file", err);
-    });
-    logger.info(
-      `Successfully returned ${req.method} on resource ${req.path} -  Status code 200`
-    );
-    return res.send(`${user} successfully deleted`);
+    return res.send(user);
   } catch (error) {
+    console.log(error);
     logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
     logger.error(`${req.method} on resource ${req.path} -  ${error}`);
     res.sendStatus(500);
@@ -144,7 +141,7 @@ let addUser = body => {
     let userToAdd = databaseDAO.createUser(body);
     return userToAdd;
   } catch (error) {
-    logger.error(`Error creating user, ${error}`);
+    logger.error(`Error creating user, ${error}, function: ${addUser.name}`);
   }
 };
 
@@ -155,7 +152,20 @@ let streamRequest = (id, stream) => {
     return requestedStream;
   } catch (error) {
     console.log(error);
-    logger.error(`Error requesting stream, ${error}`);
+    logger.error(
+      `Error requesting stream, ${error}, function: ${streamRequest.name}`
+    );
+  }
+};
+
+let removeUser = id => {
+  try {
+    let user = databaseDAO.deleteUser(id);
+    return user;
+  } catch (error) {
+    logger.error(
+      `Error in deleting user ${id}, ${error}, function: ${removeUser.name}`
+    );
   }
 };
 

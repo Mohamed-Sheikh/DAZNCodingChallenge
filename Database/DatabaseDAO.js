@@ -15,7 +15,9 @@ class DatabaseDAO {
       logger.info(`Successfully returned user${id}`);
       return data.Users[UserId];
     } catch (error) {
-      logger.error(`Error fetching user, ${error}`);
+      logger.error(
+        `Error fetching user, ${error}, function: ${this.getUser.name}`
+      );
     }
   }
   static createUser(body) {
@@ -41,13 +43,15 @@ class DatabaseDAO {
         if (err) {
           console.error("Can't update file--", err);
           logger.error(
-            `Error writing to database - user not created, ${error}`
+            `Error writing to database - user not created, ${error}, function: ${this.createUser.name}`
           );
         }
       });
       return true;
     } catch (error) {
-      logger.error(`Error creating user, ${error}`);
+      logger.error(
+        `Error creating user, ${error}, function: ${this.createUser.name}`
+      );
       return false;
     }
   }
@@ -87,7 +91,9 @@ class DatabaseDAO {
             JSON.stringify(data),
             err => {
               if (err) {
-                logger.error(`Can't update database. ${error}`);
+                logger.error(
+                  `Can't update database. ${error}, function: ${this.addStream.name}`
+                );
               }
             }
           );
@@ -98,7 +104,36 @@ class DatabaseDAO {
           return `Request for ${stream} succesful`;
       }
     } catch (error) {
-      logger.error(`Error adding stream to user ${user}, ${error}`);
+      logger.error(
+        `Error adding stream to user ${user}, ${error}, function: ${this.addStream.name}`
+      );
+    }
+  }
+  static deleteUser(id) {
+    logger.info(`Request to delete user:${id}`);
+    try {
+      if (!data["Users"][id]) {
+        return false;
+      }
+      console.log("HERE");
+
+      //Deleting user, in reality would make a call to a database to achieve this.
+      delete data["Users"][id];
+
+      fs.writeFile("Database/database.json", JSON.stringify(data), err => {
+        if (err) {
+          console.error("Can't update file--", err);
+          logger.error(
+            `Error writing to database - user not created, ${error}, function: ${this.deleteUser.name}`
+          );
+        }
+      });
+      logger.info(`Successfully removed user ${id} from database`);
+      return `user ${id} successfully deleted`;
+    } catch (error) {
+      logger.error(
+        `Error deleting user ${id} from database stream to user, ${error}, function: ${this.deleteUser.name}`
+      );
     }
   }
 }
