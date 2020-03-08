@@ -34,11 +34,16 @@
         "offline": { "lastOnline": null }
       }
     },
-    "456f8290-60be-11ea-8237-3dd9467f27c1": {
+    "010": {
       "Name": "Test User",
       "Subscription": "basic plan",
       "Status": {
-        "Online": { "Streams": { "activeStreams": 0, "watching": [] } },
+        "Online": {
+          "Streams": {
+            "activeStreams": 3,
+            "watching": ["stream_100", "stream_11", "stream_12"]
+          }
+        },
         "offline": { "lastOnline": null }
       }
     }

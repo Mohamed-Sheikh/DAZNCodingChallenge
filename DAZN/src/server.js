@@ -1,10 +1,8 @@
 "use strict";
 const express = require("express");
-const axios = require("axios");
 const app = express();
 const bodyParser = require("body-parser");
 const databaseDAO = require("../../Database/DatabaseDAO.js");
-const fs = require("fs");
 const config = require("../../config.json");
 const logger = require("../../Middleware/logger");
 
@@ -59,30 +57,11 @@ app.get("/getUser", (req, res) => {
 app.post("/createUser", (req, res) => {
   logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   let body = JSON.parse(req.body);
-  let userId = !body.id ? uuid.v1() : body.id;
-  let obj = {
-    Name: body.Name,
-    Subscription: body.Subscription,
-    Status: {
-      Online: {
-        Streams: {
-          activeStreams: 0,
-          watching: []
-        }
-      },
-      offline: { lastOnline: null }
-    }
-  };
+  let user = addUser(body);
 
-  console.log("OBJ IS", obj);
-
-  data.Users[userId] = obj;
-  console.log("DATA IS", data);
-  fs.writeFile("Database/database.json", JSON.stringify(data), err => {
-    if (err) {
-      console.error("Can't update file--", err);
-    }
-  });
+  if (!user) {
+    return res.sendStatus(500);
+  }
   return res.send(body.Name + " created");
 
   //auth?
@@ -133,53 +112,18 @@ app.get("/getAllUsers", (req, res) => {
   }
 });
 
-app.get("/requestStream", (req, res) => {
+app.post("/requestStream", (req, res) => {
   logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
+  let body = JSON.parse(req.body);
   //fix this
   try {
-    let UserId = req.query.id;
-    let stream = req.query.stream;
-
-    let user = fetchUser(UserId);
-    if (!user) {
-      logger.error(`${req.method} on resource ${req.path} -  Status code 400`);
-      return res.sendStatus(400);
+    let UserId = body.id;
+    let stream = body.stream;
+    let request = streamRequest(UserId, stream);
+    if (!request) {
+      res.sendStatus(400);
     }
-    let activeStreams = user.Status.Online.Streams.activeStreams;
-    let currentStreams = user.Status.Online.Streams.watching;
-
-    switch (true) {
-      case currentStreams.includes(stream):
-        logger.info(UserId);
-        res.send(`You are already watching ${stream}`);
-        break;
-      case activeStreams >= process.env.concurrentLimit:
-        logger.info(
-          `User ${UserId} has attempted to watch new stream - concurrent stream limit exceeded`
-        );
-        res.send(
-          `User - ${UserId} has exceeded maximum concurrent streams allowed.`
-        );
-        break;
-      default:
-        /*in reality would write to a database,
-          database of choice being DynamoDb, 
-          writing to a local json file to mimic
-          data */
-
-        activeStreams += 1;
-        data.Users[UserId].Status.Online.Streams.activeStreams = activeStreams;
-        data.Users[UserId].Status.Online.Streams.watching.push(
-          stream.toLowerCase()
-        );
-        fs.writeFile("Database/database.json", JSON.stringify(data), err => {
-          console.error("Can't update file", err);
-        });
-        logger.info(
-          `User ${req.query.id} has attempted to watch new stream (${stream}) - request successful`
-        );
-        return res.send(`Request for ${stream} succesful`);
-    }
+    return res.send(request);
   } catch (err) {
     logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
     logger.error(`${req.method} on resource ${req.path} -  ${err}`);
@@ -189,12 +133,29 @@ app.get("/requestStream", (req, res) => {
 let fetchUser = id => {
   try {
     let user = databaseDAO.getUser(id);
-    if (!user) {
-      return false;
-    }
     return user;
   } catch (error) {
     logger.error(`Error fetching user, ${error}`);
+  }
+};
+
+let addUser = body => {
+  try {
+    let userToAdd = databaseDAO.createUser(body);
+    return userToAdd;
+  } catch (error) {
+    logger.error(`Error creating user, ${error}`);
+  }
+};
+
+let streamRequest = (id, stream) => {
+  try {
+    let user = fetchUser(id);
+    let requestedStream = databaseDAO.addStream(id, stream, user);
+    return requestedStream;
+  } catch (error) {
+    console.log(error);
+    logger.error(`Error requesting stream, ${error}`);
   }
 };
 
