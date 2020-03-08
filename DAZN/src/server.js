@@ -5,7 +5,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const databaseDAO = require("../../Database/DatabaseDAO.js");
 const fs = require("fs");
-const uuid = require("uuid");
 const config = require("../../config.json");
 const logger = require("../../Middleware/logger");
 
@@ -60,7 +59,7 @@ app.get("/getUser", (req, res) => {
 app.post("/createUser", (req, res) => {
   logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   let body = JSON.parse(req.body);
-  let userId = uuid.v1();
+  let userId = !body.id ? uuid.v1() : body.id;
   let obj = {
     Name: body.Name,
     Subscription: body.Subscription,
@@ -84,36 +83,32 @@ app.post("/createUser", (req, res) => {
       console.error("Can't update file--", err);
     }
   });
-  res.send(body.Name + " created");
+  return res.send(body.Name + " created");
 
   //auth?
   //test the right stuff is passed in
   //get the body and append it to our json
-
-  console.log("id is ", req.query.id);
-  let UserId = req.query.id;
-
-  res.send(data.Users[UserId]);
 });
 
-app.get("/removeUser", (req, res) => {
+app.post("/removeUser", (req, res) => {
+  let body = JSON.parse(req.body);
   logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   try {
-    let user = fetchUser(req.query.id);
+    let user = fetchUser(body.id);
     if (!user) {
       logger.error(`${req.method} on resource ${req.path} -  Status code 400`);
       return res.sendStatus(400);
     }
 
     //Deleting user, in reality would make a call to a database to achieve this.
-    delete data["Users"][req.query.id];
+    delete data["Users"][body.id];
     fs.writeFile("Database/database.json", JSON.stringify(data), err => {
       console.error("Can't update file", err);
     });
     logger.info(
       `Successfully returned ${req.method} on resource ${req.path} -  Status code 200`
     );
-    return res.sendStatus(200);
+    return res.send(`${user} successfully deleted`);
   } catch (error) {
     logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
     logger.error(`${req.method} on resource ${req.path} -  ${error}`);
@@ -155,17 +150,15 @@ app.get("/requestStream", (req, res) => {
 
     switch (true) {
       case currentStreams.includes(stream):
-        logger.info(
-          `User ${req.query.id} has attempted to watch new stream - already watching stream!`
-        );
+        logger.info(UserId);
         res.send(`You are already watching ${stream}`);
         break;
       case activeStreams >= process.env.concurrentLimit:
         logger.info(
-          `User ${req.query.id} has attempted to watch new stream - concurrent stream limit exceeded`
+          `User ${UserId} has attempted to watch new stream - concurrent stream limit exceeded`
         );
         res.send(
-          `User - ${user.Name} has exceeded maximum concurrent streams allowed.`
+          `User - ${UserId} has exceeded maximum concurrent streams allowed.`
         );
         break;
       default:
@@ -200,7 +193,9 @@ let fetchUser = id => {
       return false;
     }
     return user;
-  } catch (error) {}
+  } catch (error) {
+    logger.error(`Error fetching user, ${error}`);
+  }
 };
 
 module.exports.app = app;
