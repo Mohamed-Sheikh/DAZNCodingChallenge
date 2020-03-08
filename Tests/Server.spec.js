@@ -1,3 +1,4 @@
+"use strict";
 const request = require("supertest");
 const DAZN = require("../DAZN/src/server");
 
@@ -14,7 +15,7 @@ describe("Testing the root path", () => {
   });
 });
 
-describe("Testing the we can create a dummy user", () => {
+describe("Testing the we can create a test user", () => {
   test("We should have a status of 200", done => {
     let body = {
       Name: "Test User",
@@ -35,12 +36,9 @@ describe("Testing the we can create a dummy user", () => {
       .then(response => {
         expect(response.text).toBe("Test User created");
         expect(response.statusCode).toBe(200);
-        expect;
-        console.log("RESPONSE IS ", response.text);
         done();
       });
   });
-  // add a call to remove user
 });
 
 // describe("Testing the we can fetch our dummy user", () => {
