@@ -2,7 +2,7 @@ const log4js = require("log4js");
 let a = "b";
 log4js.configure({
   appenders: {
-    everything: {
+    Log: {
       type: "file",
       filename: "./Middleware/StreamingApiLogs.log",
       maxLogSize: 10485760,
@@ -11,9 +11,9 @@ log4js.configure({
     }
   },
   categories: {
-    default: { appenders: ["everything"], level: "debug" }
+    default: { appenders: ["Log"], level: "debug" }
   }
 });
-const logger = log4js.getLogger("everything");
+const logger = log4js.getLogger("Log");
 
 module.exports = logger;

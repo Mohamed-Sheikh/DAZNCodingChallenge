@@ -3,13 +3,11 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const bodyParser = require("body-parser");
-const database = "../../Database/database.json";
-const data = require(database);
+const databaseDAO = require("../../Database/DatabaseDAO.js");
 const fs = require("fs");
 const uuid = require("uuid");
 const config = require("../../config.json");
 const logger = require("../../Middleware/logger");
-console.log("FINL", logger);
 
 //Using local environment variables
 process.env = config;
@@ -25,42 +23,42 @@ app.use(
 app.get("/", (req, res) => {
   try {
     logger.info(
-      `${req.query.method} on resource ${req.query.path} -  Status code 200`
+      `${req.method} request on resource ${req.path} -  Status code 200`
     );
-    logger.info("");
+    logger.info(
+      `Successfully returned ${req.method} on resource ${req.path} -  Status code 200`
+    );
     return res.sendStatus(200);
   } catch (error) {
-    logger.error(
-      `${req.query.method} on resource ${req.query.path} -  Status code 404`
-    );
+    logger.error(`${req.method} on resource ${req.path} -  Status code 404`);
+    logger.error(`${req.method} on resource ${req.path} -  error`);
     return res.sendStatus(404);
   }
 });
 
 app.get("/getUser", (req, res) => {
-  logger.info(
-    `${req.query.method} on resource ${req.query.path} -  Status code 200`
-  );
+  logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   //auth?
   try {
     let user = fetchUser(req.query.id);
     if (!user) {
+      logger.error(`${req.method} on resource ${req.path} -  Status code 400`);
       return res.sendStatus(400);
     }
+    logger.info(
+      `Successfully returned ${req.method} on resource ${req.path} -  Status code 200`
+    );
     return res.json(user);
   } catch (error) {
-    logger.error(
-      `${req.query.method} on resource ${req.query.path} -  Status code 404`
-    );
+    logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
+    logger.error(`${req.method} on resource ${req.path} -  ${error}`);
     return res.sendStatus(500);
   }
 });
 
 //for unit testing purposes
 app.post("/createUser", (req, res) => {
-  logger.info(
-    `${req.query.method} on resource ${req.query.path} -  Status code 200`
-  );
+  logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   let body = JSON.parse(req.body);
   let userId = uuid.v1();
   let obj = {
@@ -99,13 +97,11 @@ app.post("/createUser", (req, res) => {
 });
 
 app.get("/removeUser", (req, res) => {
-  logger.info(
-    `${req.query.method} on resource ${req.query.path} -  Status code 200`
-  );
+  logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   try {
     let user = fetchUser(req.query.id);
     if (!user) {
-      res.json(`User ${req.id}not found`);
+      logger.error(`${req.method} on resource ${req.path} -  Status code 400`);
       return res.sendStatus(400);
     }
 
@@ -114,29 +110,36 @@ app.get("/removeUser", (req, res) => {
     fs.writeFile("Database/database.json", JSON.stringify(data), err => {
       console.error("Can't update file", err);
     });
-    res.json(`User ${user.Name} Deleted`);
-    res.sendStatus(200);
+    logger.info(
+      `Successfully returned ${req.method} on resource ${req.path} -  Status code 200`
+    );
+    return res.sendStatus(200);
   } catch (error) {
-    console.log(error);
+    logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
+    logger.error(`${req.method} on resource ${req.path} -  ${error}`);
     res.sendStatus(500);
   }
 });
 
 app.get("/getAllUsers", (req, res) => {
-  logger.info(
-    `${req.query.method} on resource ${req.query.path} -  Status code 200`
-  );
+  try {
+    logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
 
-  //auth?
-  //will be too big
-  logger.info(`Successfully sent: Status code 200`);
-  res.send(data);
+    //auth?
+    //will be too big
+    logger.info(
+      `Successfully returned ${req.method} on resource ${req.path} -  Status code 200`
+    );
+    return res.send(data);
+  } catch (error) {
+    logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
+    logger.error(`${req.method} on resource ${req.path} -  ${error}`);
+    return res.sendStatus(500);
+  }
 });
 
 app.get("/requestStream", (req, res) => {
-  logger.info(
-    `${req.query.method} on resource ${req.query.path} -  Status code 200`
-  );
+  logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
   //fix this
   try {
     let UserId = req.query.id;
@@ -144,6 +147,7 @@ app.get("/requestStream", (req, res) => {
 
     let user = fetchUser(UserId);
     if (!user) {
+      logger.error(`${req.method} on resource ${req.path} -  Status code 400`);
       return res.sendStatus(400);
     }
     let activeStreams = user.Status.Online.Streams.activeStreams;
@@ -151,9 +155,15 @@ app.get("/requestStream", (req, res) => {
 
     switch (true) {
       case currentStreams.includes(stream):
+        logger.info(
+          `User ${req.query.id} has attempted to watch new stream - already watching stream!`
+        );
         res.send(`You are already watching ${stream}`);
         break;
       case activeStreams >= process.env.concurrentLimit:
+        logger.info(
+          `User ${req.query.id} has attempted to watch new stream - concurrent stream limit exceeded`
+        );
         res.send(
           `User - ${user.Name} has exceeded maximum concurrent streams allowed.`
         );
@@ -172,20 +182,25 @@ app.get("/requestStream", (req, res) => {
         fs.writeFile("Database/database.json", JSON.stringify(data), err => {
           console.error("Can't update file", err);
         });
-        res.send(`Request for ${stream} succesful`);
+        logger.info(
+          `User ${req.query.id} has attempted to watch new stream (${stream}) - request successful`
+        );
+        return res.send(`Request for ${stream} succesful`);
     }
   } catch (err) {
-    console.error(err);
+    logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
+    logger.error(`${req.method} on resource ${req.path} -  ${err}`);
+    res.sendStatus(500);
   }
 });
 let fetchUser = id => {
-  console.log("id is ", id);
-  let UserId = id;
-  if (!data.Users[UserId]) {
-    return false;
-  }
-  return data.Users[UserId];
+  try {
+    let user = databaseDAO.getUser(id);
+    if (!user) {
+      return false;
+    }
+    return user;
+  } catch (error) {}
 };
 
 module.exports.app = app;
-module.exports.test = test;

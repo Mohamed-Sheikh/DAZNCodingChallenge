@@ -9,7 +9,6 @@ describe("Testing the root path", () => {
       .then(response => {
         expect(response.statusCode).toBe(200);
         expect(response.text).toBe("OK!");
-        console.log("RESPONSE IS ", response.text);
         done();
       });
   });

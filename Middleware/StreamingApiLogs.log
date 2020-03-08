@@ -1,5 +1,94 @@
-[2020-03-08T17:31:54.151] [INFO] everything - GOT IT STaaILL
-[2020-03-08T17:35:42.840] [INFO] everything - Server running
-[2020-03-08T17:35:46.165] [INFO] everything - Successfully sent: Status code 200
-[2020-03-08T17:36:04.105] [INFO] everything - Server running
-[2020-03-08T17:36:05.063] [INFO] everything - Successfully sent: Status code 200
+ [2020-03-08T17:50:40.579] [INFO] Log - Server running
+[2020-03-08T17:50:44.843] [INFO] Log - GET on resource /getallusers -  Status code 200
+[2020-03-08T17:50:44.843] [INFO] Log - Successfully sent: Status code 200
+[2020-03-08T17:51:14.804] [INFO] Log - Server running
+[2020-03-08T17:51:57.398] [INFO] Log - Server running
+[2020-03-08T17:53:05.163] [INFO] Log - Server running
+[2020-03-08T17:53:33.838] [INFO] Log - Server running
+[2020-03-08T17:54:08.115] [INFO] Log - Server running
+[2020-03-08T17:54:33.844] [INFO] Log - Server running
+[2020-03-08T17:55:08.599] [INFO] Log - Server running
+[2020-03-08T17:55:25.800] [INFO] Log - Server running
+[2020-03-08T17:56:10.793] [INFO] Log - Server running
+[2020-03-08T17:56:32.763] [INFO] Log - Server running
+[2020-03-08T17:57:09.990] [INFO] Log - Server running
+[2020-03-08T17:57:14.784] [INFO] Log - Server running
+[2020-03-08T17:57:30.093] [INFO] Log - Server running
+[2020-03-08T17:57:59.740] [INFO] Log - Server running
+[2020-03-08T17:58:04.618] [INFO] Log - Server running
+[2020-03-08T17:58:28.382] [INFO] Log - Server running
+[2020-03-08T17:59:19.080] [INFO] Log - Server running
+[2020-03-08T17:59:30.944] [INFO] Log - Server running
+[2020-03-08T18:00:08.494] [INFO] Log - Server running
+[2020-03-08T18:01:40.731] [INFO] Log - Server running
+[2020-03-08T18:02:29.494] [INFO] Log - Server running
+[2020-03-08T18:02:31.088] [INFO] Log - Server running
+[2020-03-08T18:02:35.142] [INFO] Log - GET on resource /getallusers -  Status code 200
+[2020-03-08T18:02:35.142] [INFO] Log - Successfully sent: Status code 200
+[2020-03-08T18:03:16.560] [INFO] Log - Server running
+[2020-03-08T18:03:17.122] [INFO] Log - GET on resource /getallusers -  Status code 200
+[2020-03-08T18:03:17.122] [INFO] Log - Successfully returned GET on resource /getallusers -  Status code 200
+[2020-03-08T18:03:36.002] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:03:36.002] [INFO] Log - Successfully returned GET on resource /getuser -  Status code 200
+[2020-03-08T18:03:37.428] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:03:37.428] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:30:55.202] [INFO] Log - Server running
+[2020-03-08T18:37:12.025] [INFO] Log - Server running
+[2020-03-08T18:37:28.664] [INFO] Log - Server running
+[2020-03-08T18:37:36.445] [INFO] Log - Server running
+[2020-03-08T18:38:25.855] [INFO] Log - Server running
+[2020-03-08T18:38:36.857] [INFO] Log - Server running
+[2020-03-08T18:39:19.349] [INFO] Log - Server running
+[2020-03-08T18:40:29.937] [INFO] Log - Server running
+[2020-03-08T18:45:35.484] [INFO] Log - Server running
+[2020-03-08T18:46:18.540] [INFO] Log - Server running
+[2020-03-08T18:46:33.062] [INFO] Log - Server running
+[2020-03-08T18:47:27.639] [INFO] Log - Server running
+[2020-03-08T18:48:14.662] [INFO] Log - Server running
+[2020-03-08T18:48:42.329] [INFO] Log - Server running
+[2020-03-08T18:49:17.264] [INFO] Log - Server running
+[2020-03-08T18:49:28.999] [INFO] Log - Server running
+[2020-03-08T18:49:31.201] [INFO] Log - Server running
+[2020-03-08T18:49:41.172] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:49:41.172] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:49:45.112] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:49:45.113] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:49:48.612] [INFO] Log - Server running
+[2020-03-08T18:49:49.521] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:49:49.522] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:49:54.567] [INFO] Log - Server running
+[2020-03-08T18:49:55.688] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:49:55.688] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:50:29.555] [INFO] Log - Server running
+[2020-03-08T18:50:30.590] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:50:30.591] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:50:50.384] [INFO] Log - Server running
+[2020-03-08T18:50:51.607] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:50:51.608] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:51:01.917] [INFO] Log - Server running
+[2020-03-08T18:51:12.056] [INFO] Log - Server running
+[2020-03-08T18:51:13.260] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:51:13.260] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:51:20.292] [INFO] Log - Server running
+[2020-03-08T18:51:21.191] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:51:21.192] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:51:37.391] [INFO] Log - Server running
+[2020-03-08T18:51:41.750] [INFO] Log - Server running
+[2020-03-08T18:51:42.613] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:51:42.614] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:51:50.756] [INFO] Log - Server running
+[2020-03-08T18:51:51.454] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:51:51.454] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T18:51:58.218] [INFO] Log - Server running
+[2020-03-08T18:52:08.101] [INFO] Log - Server running
+[2020-03-08T18:52:16.083] [INFO] Log - Server running
+[2020-03-08T18:52:20.035] [INFO] Log - Server running
+[2020-03-08T18:52:24.216] [INFO] Log - Request to get user undefined
+[2020-03-08T18:52:24.218] [INFO] Log - Server running
+[2020-03-08T18:52:44.422] [INFO] Log - Server running
+[2020-03-08T18:52:45.452] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T18:52:45.452] [INFO] Log - Request to get user 001
+[2020-03-08T18:52:45.452] [INFO] Log - Successfully returned user001
+[2020-03-08T18:52:45.452] [INFO] Log - Successfully returned GET on resource /getuser -  Status code 200
+[2020-03-08T18:52:50.916] [INFO] Log - Server running
+[2020-03-08T18:52:53.904] [INFO] Log - Server running
