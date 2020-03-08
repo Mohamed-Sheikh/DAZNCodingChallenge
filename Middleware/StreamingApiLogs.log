@@ -303,3 +303,187 @@
 [2020-03-08T21:25:47.758] [INFO] Log - Server running
 [2020-03-08T21:25:49.674] [INFO] Log - Server running
 [2020-03-08T21:26:48.990] [INFO] Log - Server running
+[2020-03-08T21:27:07.499] [INFO] Log - Server running
+[2020-03-08T21:27:26.089] [INFO] Log - Server running
+[2020-03-08T21:27:46.454] [INFO] Log - Server running
+[2020-03-08T21:27:47.674] [INFO] Log - Server running
+[2020-03-08T21:27:52.223] [INFO] Log - Server running
+[2020-03-08T21:27:52.266] [INFO] Log - GET request on resource / -  Status code 200
+[2020-03-08T21:27:52.266] [INFO] Log - Successfully returned GET on resource / -  Status code 200
+[2020-03-08T21:27:52.287] [INFO] Log - POST on resource /createUser -  Status code 200
+[2020-03-08T21:27:52.287] [INFO] Log - Request to create user
+[2020-03-08T21:27:52.292] [INFO] Log - GET on resource /getUser -  Status code 200
+[2020-03-08T21:27:52.292] [INFO] Log - Request to get user 010
+[2020-03-08T21:27:52.292] [INFO] Log - Successfully returned user010
+[2020-03-08T21:27:52.292] [INFO] Log - Successfully returned GET on resource /getUser -  Status code 200
+[2020-03-08T21:27:52.295] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:27:52.295] [INFO] Log - Request to get user 010
+[2020-03-08T21:27:52.295] [INFO] Log - Successfully returned user010
+[2020-03-08T21:27:52.295] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:27:52.295] [INFO] Log - Successfully updated database
+[2020-03-08T21:27:52.295] [INFO] Log - User 010 has attempted to watch new stream (stream_100) - request successful
+[2020-03-08T21:27:52.298] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:27:52.298] [INFO] Log - Request to get user 010
+[2020-03-08T21:27:52.298] [INFO] Log - Successfully returned user010
+[2020-03-08T21:27:52.298] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:27:52.298] [INFO] Log - Successfully updated database
+[2020-03-08T21:27:52.298] [INFO] Log - User 010 has attempted to watch new stream (stream_11) - request successful
+[2020-03-08T21:27:52.299] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:27:52.299] [INFO] Log - Request to get user 010
+[2020-03-08T21:27:52.299] [INFO] Log - Successfully returned user010
+[2020-03-08T21:27:52.299] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:27:52.299] [INFO] Log - Successfully updated database
+[2020-03-08T21:27:52.299] [INFO] Log - User 010 has attempted to watch new stream (stream_12) - request successful
+[2020-03-08T21:27:52.299] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:27:52.299] [INFO] Log - Request to get user 010
+[2020-03-08T21:27:52.299] [INFO] Log - Successfully returned user010
+[2020-03-08T21:27:52.299] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:27:52.299] [INFO] Log - User 010 has attempted to watch new stream - concurrent stream limit exceeded
+[2020-03-08T21:27:52.302] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:27:52.302] [INFO] Log - Request to get user 010
+[2020-03-08T21:27:52.302] [INFO] Log - Successfully returned user010
+[2020-03-08T21:27:52.302] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:27:52.302] [INFO] Log - User 010 is already watching stream requested
+[2020-03-08T21:27:52.304] [INFO] Log - POST on resource /removeUser -  Status code 200
+[2020-03-08T21:27:52.305] [INFO] Log - Request to delete user:010
+[2020-03-08T21:27:52.305] [INFO] Log - Successfully removed user 010 from database
+[2020-03-08T21:27:52.307] [INFO] Log - GET on resource /getUser -  Status code 200
+[2020-03-08T21:27:52.307] [INFO] Log - Request to get user 
+[2020-03-08T21:27:52.307] [ERROR] Log - GET on resource /getUser -  Status code 400
+[2020-03-08T21:27:52.599] [INFO] Log - Server running
+[2020-03-08T21:29:57.960] [INFO] Log - Server running
+[2020-03-08T21:32:33.263] [INFO] Log - Server running
+[2020-03-08T21:32:41.429] [INFO] Log - Server running
+[2020-03-08T21:33:45.259] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:33:45.259] [INFO] Log - Request to get user 002
+[2020-03-08T21:33:45.259] [INFO] Log - Successfully returned user002
+[2020-03-08T21:33:45.260] [INFO] Log - Request to add stream to user:002
+[2020-03-08T21:33:45.260] [INFO] Log - Successfully updated database
+[2020-03-08T21:33:45.260] [INFO] Log - User 002 has attempted to watch new stream (Stream_200) - request successful
+[2020-03-08T21:33:45.684] [INFO] Log - Server running
+[2020-03-08T21:33:51.803] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:33:51.803] [INFO] Log - Request to get user 002
+[2020-03-08T21:33:51.803] [INFO] Log - Successfully returned user002
+[2020-03-08T21:33:51.803] [INFO] Log - Request to add stream to user:002
+[2020-03-08T21:33:51.803] [INFO] Log - User 002 has attempted to watch new stream - concurrent stream limit exceeded
+[2020-03-08T21:36:44.640] [INFO] Log - Server running
+[2020-03-08T21:37:11.231] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T21:37:11.231] [INFO] Log - Request to get user undefined
+[2020-03-08T21:37:11.231] [ERROR] Log - GET on resource /getuser -  Status code 400
+[2020-03-08T21:38:52.449] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T21:38:52.449] [INFO] Log - Request to get user 001
+[2020-03-08T21:38:52.449] [INFO] Log - Successfully returned user001
+[2020-03-08T21:38:52.449] [INFO] Log - Successfully returned GET on resource /getuser -  Status code 200
+[2020-03-08T21:40:10.197] [INFO] Log - GET on resource /getuser -  Status code 200
+[2020-03-08T21:40:10.197] [INFO] Log - Request to get user 001
+[2020-03-08T21:40:10.197] [INFO] Log - Successfully returned user001
+[2020-03-08T21:40:10.197] [INFO] Log - Successfully returned GET on resource /getuser -  Status code 200
+[2020-03-08T21:42:55.873] [INFO] Log - GET on resource /getallusers -  Status code 200
+[2020-03-08T21:42:55.873] [INFO] Log - Successfully returned GET on resource /getallusers -  Status code 200
+[2020-03-08T21:42:55.874] [ERROR] Log - GET on resource /getallusers -  Status code 500
+[2020-03-08T21:42:55.874] [ERROR] Log - GET on resource /getallusers -  ReferenceError: data is not defined
+[2020-03-08T21:43:06.280] [INFO] Log - GET on resource /getallusers -  Status code 200
+[2020-03-08T21:43:06.280] [INFO] Log - Successfully returned GET on resource /getallusers -  Status code 200
+[2020-03-08T21:43:06.280] [ERROR] Log - GET on resource /getallusers -  Status code 500
+[2020-03-08T21:43:06.280] [ERROR] Log - GET on resource /getallusers -  ReferenceError: data is not defined
+[2020-03-08T21:43:54.732] [INFO] Log - Server running
+[2020-03-08T21:44:10.603] [INFO] Log - Server running
+[2020-03-08T21:44:32.645] [INFO] Log - Server running
+[2020-03-08T21:44:48.949] [INFO] Log - Server running
+[2020-03-08T21:52:20.342] [INFO] Log - Server running
+[2020-03-08T21:52:40.974] [INFO] Log - Server running
+[2020-03-08T21:52:56.368] [INFO] Log - Server running
+[2020-03-08T21:53:28.316] [INFO] Log - Server running
+[2020-03-08T21:53:44.461] [INFO] Log - GET on resource /getallusers -  Status code 200
+[2020-03-08T21:53:44.461] [INFO] Log - Successfully returned GET on resource /getallusers -  Status code 200
+[2020-03-08T21:53:44.461] [ERROR] Log - GET on resource /getallusers -  Status code 500
+[2020-03-08T21:53:44.462] [ERROR] Log - GET on resource /getallusers -  ReferenceError: data is not defined
+[2020-03-08T21:54:09.582] [INFO] Log - Server running
+[2020-03-08T21:54:11.910] [INFO] Log - Server running
+[2020-03-08T21:54:40.949] [INFO] Log - Server running
+[2020-03-08T21:54:49.280] [INFO] Log - Server running
+[2020-03-08T21:54:55.526] [INFO] Log - Request to get all users
+[2020-03-08T21:55:52.849] [INFO] Log - Server running
+[2020-03-08T21:55:54.219] [INFO] Log - Server running
+[2020-03-08T21:56:00.503] [INFO] Log - Request to get all users
+[2020-03-08T21:56:42.047] [INFO] Log - Server running
+[2020-03-08T21:56:43.733] [INFO] Log - Server running
+[2020-03-08T21:56:49.802] [INFO] Log - Server running
+[2020-03-08T21:56:53.424] [INFO] Log - Server running
+[2020-03-08T21:56:53.453] [INFO] Log - Request to get all users
+[2020-03-08T21:57:54.027] [INFO] Log - Server running
+[2020-03-08T21:58:01.684] [INFO] Log - Server running
+[2020-03-08T21:58:01.714] [INFO] Log - Request to get all users
+[2020-03-08T21:58:11.645] [INFO] Log - Server running
+[2020-03-08T21:58:15.792] [INFO] Log - Server running
+[2020-03-08T21:58:15.831] [INFO] Log - GET request on resource / -  Status code 200
+[2020-03-08T21:58:15.831] [INFO] Log - Successfully returned GET on resource / -  Status code 200
+[2020-03-08T21:58:15.852] [INFO] Log - POST on resource /createUser -  Status code 200
+[2020-03-08T21:58:15.852] [INFO] Log - Request to create user
+[2020-03-08T21:58:15.856] [INFO] Log - GET on resource /getUser -  Status code 200
+[2020-03-08T21:58:15.856] [INFO] Log - Request to get user 010
+[2020-03-08T21:58:15.856] [INFO] Log - Successfully returned user010
+[2020-03-08T21:58:15.856] [INFO] Log - Successfully returned GET on resource /getUser -  Status code 200
+[2020-03-08T21:58:15.859] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:58:15.860] [INFO] Log - Request to get user 010
+[2020-03-08T21:58:15.860] [INFO] Log - Successfully returned user010
+[2020-03-08T21:58:15.860] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:58:15.860] [INFO] Log - Successfully updated database
+[2020-03-08T21:58:15.860] [INFO] Log - User 010 has attempted to watch new stream (stream_100) - request successful
+[2020-03-08T21:58:15.864] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:58:15.864] [INFO] Log - Request to get user 010
+[2020-03-08T21:58:15.864] [INFO] Log - Successfully returned user010
+[2020-03-08T21:58:15.864] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:58:15.864] [INFO] Log - Successfully updated database
+[2020-03-08T21:58:15.864] [INFO] Log - User 010 has attempted to watch new stream (stream_11) - request successful
+[2020-03-08T21:58:15.864] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:58:15.864] [INFO] Log - Request to get user 010
+[2020-03-08T21:58:15.864] [INFO] Log - Successfully returned user010
+[2020-03-08T21:58:15.864] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:58:15.864] [INFO] Log - Successfully updated database
+[2020-03-08T21:58:15.864] [INFO] Log - User 010 has attempted to watch new stream (stream_12) - request successful
+[2020-03-08T21:58:15.865] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:58:15.865] [INFO] Log - Request to get user 010
+[2020-03-08T21:58:15.865] [INFO] Log - Successfully returned user010
+[2020-03-08T21:58:15.865] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:58:15.865] [INFO] Log - User 010 has attempted to watch new stream - concurrent stream limit exceeded
+[2020-03-08T21:58:15.868] [INFO] Log - POST on resource /requestStream -  Status code 200
+[2020-03-08T21:58:15.868] [INFO] Log - Request to get user 010
+[2020-03-08T21:58:15.868] [INFO] Log - Successfully returned user010
+[2020-03-08T21:58:15.868] [INFO] Log - Request to add stream to user:010
+[2020-03-08T21:58:15.868] [INFO] Log - User 010 is already watching stream requested
+[2020-03-08T21:58:15.870] [INFO] Log - POST on resource /removeUser -  Status code 200
+[2020-03-08T21:58:15.870] [INFO] Log - Request to delete user:010
+[2020-03-08T21:58:15.870] [INFO] Log - Successfully removed user 010 from database
+[2020-03-08T21:58:15.872] [INFO] Log - GET on resource /getUser -  Status code 200
+[2020-03-08T21:58:15.872] [INFO] Log - Request to get user 
+[2020-03-08T21:58:15.872] [ERROR] Log - GET on resource /getUser -  Status code 400
+[2020-03-08T21:58:15.875] [INFO] Log - Request to get all users
+[2020-03-08T21:58:16.163] [INFO] Log - Server running
+[2020-03-08T22:00:58.671] [INFO] Log - POST on resource /createUser -  Status code 200
+[2020-03-08T22:00:58.672] [INFO] Log - Request to create user
+[2020-03-08T22:00:59.114] [INFO] Log - Server running
+[2020-03-08T22:01:46.588] [INFO] Log - Server running
+[2020-03-08T22:02:05.344] [INFO] Log - POST on resource /removeuser -  Status code 200
+[2020-03-08T22:02:05.344] [INFO] Log - Request to delete user:4ace9300-6188-11ea-bfbb-add0a77c75de
+[2020-03-08T22:02:05.344] [INFO] Log - Successfully removed user 4ace9300-6188-11ea-bfbb-add0a77c75de from database
+[2020-03-08T22:02:05.776] [INFO] Log - Server running
+[2020-03-08T22:02:08.686] [INFO] Log - Server running
+[2020-03-08T22:02:30.582] [INFO] Log - Request to get all users
+[2020-03-08T22:03:18.064] [INFO] Log - POST on resource /requeststream -  Status code 200
+[2020-03-08T22:03:18.065] [INFO] Log - Request to get user 001
+[2020-03-08T22:03:18.065] [INFO] Log - Successfully returned user001
+[2020-03-08T22:03:18.065] [INFO] Log - Request to add stream to user:001
+[2020-03-08T22:03:18.065] [INFO] Log - User 001 has attempted to watch new stream - concurrent stream limit exceeded
+[2020-03-08T22:03:31.104] [INFO] Log - Server running
+[2020-03-08T22:03:32.829] [INFO] Log - POST on resource /requeststream -  Status code 200
+[2020-03-08T22:03:32.829] [INFO] Log - Request to get user 001
+[2020-03-08T22:03:32.829] [INFO] Log - Successfully returned user001
+[2020-03-08T22:03:32.829] [INFO] Log - Request to add stream to user:001
+[2020-03-08T22:03:32.829] [INFO] Log - Successfully updated database
+[2020-03-08T22:03:32.829] [INFO] Log - User 001 has attempted to watch new stream (boxing) - request successful
+[2020-03-08T22:03:33.152] [INFO] Log - Server running
+[2020-03-08T22:03:43.695] [INFO] Log - Server running
+[2020-03-08T22:03:51.255] [INFO] Log - Server running
+[2020-03-08T22:05:48.438] [INFO] Log - Server running
+[2020-03-08T22:06:08.307] [INFO] Log - Request to get all users

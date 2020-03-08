@@ -115,7 +115,6 @@ class DatabaseDAO {
       if (!data["Users"][id]) {
         return false;
       }
-      console.log("HERE");
 
       //Deleting user, in reality would make a call to a database to achieve this.
       delete data["Users"][id];
@@ -133,6 +132,17 @@ class DatabaseDAO {
     } catch (error) {
       logger.error(
         `Error deleting user ${id} from database stream to user, ${error}, function: ${this.deleteUser.name}`
+      );
+    }
+  }
+
+  static getAllUsers() {
+    try {
+      logger.info(`Request to get all users`);
+      return data;
+    } catch (error) {
+      logger.error(
+        `Error fetching all users, ${error}, function: ${this.getAllUsers.name}`
       );
     }
   }

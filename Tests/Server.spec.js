@@ -1,7 +1,6 @@
 "use strict";
 const request = require("supertest");
 const DAZN = require("../DAZN/src/server");
-const axios = require("axios");
 
 describe("Testing the root path", () => {
   test("We should have a status of 200", done => {
@@ -34,7 +33,6 @@ describe("Testing user can be created", () => {
       .post("/createUser")
       .send(JSON.stringify(body))
       .then(response => {
-        console.log("sdfsdfds", response.text);
         expect(response.text).toBe("Test User created");
         expect(response.statusCode).toBe(200);
         done();
@@ -164,6 +162,18 @@ describe("Testing that we get a status of 400 when we attempt to get user that d
       .then(response => {
         expect(response.statusCode).toBe(400);
         expect(response.text).toBe("Bad Request");
+        done();
+      });
+  });
+});
+
+describe("Testing that we get a status of 200 when we make a request to get all users in database", () => {
+  test("We should have a status of 200", done => {
+    request(DAZN.app)
+      .get("/getallusers")
+      .then(response => {
+        expect(response.statusCode).toBe(200);
+        expect(typeof response.body.Users).toBe("object");
         done();
       });
   });

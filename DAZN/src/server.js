@@ -69,10 +69,6 @@ app.post("/createUser", (req, res) => {
     logger.error(`${req.method} on resource ${req.path} -  ${err}`);
     return res.sendStatus(500);
   }
-
-  //auth?
-  //test the right stuff is passed in
-  //get the body and append it to our json
 });
 
 app.post("/removeUser", (req, res) => {
@@ -85,7 +81,6 @@ app.post("/removeUser", (req, res) => {
     }
     return res.send(user);
   } catch (error) {
-    console.log(error);
     logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
     logger.error(`${req.method} on resource ${req.path} -  ${error}`);
     res.sendStatus(500);
@@ -94,14 +89,8 @@ app.post("/removeUser", (req, res) => {
 
 app.get("/getAllUsers", (req, res) => {
   try {
-    logger.info(`${req.method} on resource ${req.path} -  Status code 200`);
-
-    //auth?
-    //will be too big
-    logger.info(
-      `Successfully returned ${req.method} on resource ${req.path} -  Status code 200`
-    );
-    return res.send(data);
+    let data = getAllUsers();
+    return res.json(data);
   } catch (error) {
     logger.error(`${req.method} on resource ${req.path} -  Status code 500`);
     logger.error(`${req.method} on resource ${req.path} -  ${error}`);
@@ -151,7 +140,6 @@ let streamRequest = (id, stream) => {
     let requestedStream = databaseDAO.addStream(id, stream, user);
     return requestedStream;
   } catch (error) {
-    console.log(error);
     logger.error(
       `Error requesting stream, ${error}, function: ${streamRequest.name}`
     );
@@ -169,4 +157,12 @@ let removeUser = id => {
   }
 };
 
+let getAllUsers = () => {
+  try {
+    let allUsers = databaseDAO.getAllUsers();
+    return allUsers;
+  } catch (error) {
+    logger.error(`Error in fetching all users in the database`);
+  }
+};
 module.exports.app = app;
