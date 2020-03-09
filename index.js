@@ -2,9 +2,9 @@
 const logger = require("./Middleware/logger");
 
 var DAZN = require("./DAZN/src/server");
-const port = 8080;
+const port = process.env.port;
 
-DAZN.app.listen(8080, function() {
-  logger.info("DAZN is listening on port 8080!");
-  console.log("DAZN is listening on port 8080!");
+DAZN.app.listen(port, function() {
+  logger.info(`DAZN is listening on port ${port}!`);
+  console.log(`DAZN is listening on port ${port}!`);
 });
