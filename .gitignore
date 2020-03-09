@@ -5,3 +5,6 @@ node_modules
 
 # logs
 Middleware/logs
+
+# misc
+.DS_Store
