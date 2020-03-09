@@ -17,8 +17,8 @@
 - **localhost:8080/**
 - **localhost:8080/getuser**
 - **localhost:8080/createuser**
--**localhost:8080/removeuser**
--**localhost:8080/getallusers**
+- **localhost:8080/removeuser**
+- **localhost:8080/getallusers**
 - **localhost:8080/requeststream**
 
 # API
