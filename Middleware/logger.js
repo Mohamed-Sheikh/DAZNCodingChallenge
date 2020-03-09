@@ -4,7 +4,7 @@ log4js.configure({
   appenders: {
     Log: {
       type: "file",
-      filename: "./Middleware/StreamingApiLogs.log",
+      filename: "./Middleware/logs/StreamingApiLogs.log",
       maxLogSize: 10485760,
       backups: 3,
       compress: true
