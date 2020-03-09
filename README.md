@@ -1,5 +1,6 @@
 # DAZNCodingChallenge
 
+- Clone/Download Project
 - Run npm install in the root directory such that all the dependencies are installed
 - Run Node index.js to start the server.
 # Test
