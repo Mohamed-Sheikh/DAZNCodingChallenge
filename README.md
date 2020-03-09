@@ -2,7 +2,6 @@
 
 - Run npm install in the root directory such that all the dependencies are installed
 - Run Node index.js to start the server.
-
 # Test
 
 - Run npm test in the root directory to run all the tests
@@ -13,6 +12,14 @@
   my database of choice would have been DynamoDB.
 - Logging can be found in the Middleware folder
 - Omited authorising the api as instructed in the brief
+
+# URL's
+- **localhost:8080/**
+- **localhost:8080/getuser**
+- **localhost:8080/createuser**
+-**localhost:8080/removeuser**
+-**localhost:8080/getallusers**
+- **localhost:8080/requeststream**
 
 # API
 
